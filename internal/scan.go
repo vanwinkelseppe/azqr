@@ -7,6 +7,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/Azure/azqr/internal/scanners/vpng"
 	"sync"
 	"time"
 
@@ -475,6 +476,7 @@ func GetScanners() []scanners.IAzureScanner {
 		&st.StorageScanner{},
 		&vm.VirtualMachineScanner{},
 		&vnet.VirtualNetworkScanner{},
+		&vpng.VPNGatewayScanner{},
 		&wps.WebPubSubScanner{},
 	}
 }
