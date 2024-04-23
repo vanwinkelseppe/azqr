@@ -6,6 +6,7 @@ package sql
 import (
 	"github.com/Azure/azqr/internal/scanners"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
+	"strings"
 )
 
 // SQLScanner - Scanner for SQL
@@ -60,16 +61,19 @@ func (c *SQLScanner) Scan(resourceGroupName string, scanContext *scanners.ScanCo
 			return nil, err
 		}
 		for _, database := range databases {
-			rr := engine.EvaluateRules(databaseRules, database, scanContext)
+			databaseName := strings.ToLower(*database.Name)
+			if databaseName != "master" {
+				rr := engine.EvaluateRules(databaseRules, database, scanContext)
 
-			results = append(results, scanners.AzureServiceResult{
-				SubscriptionID: c.config.SubscriptionID,
-				ResourceGroup:  resourceGroupName,
-				ServiceName:    *database.Name,
-				Type:           *database.Type,
-				Location:       *database.Location,
-				Rules:          rr,
-			})
+				results = append(results, scanners.AzureServiceResult{
+					SubscriptionID: c.config.SubscriptionID,
+					ResourceGroup:  resourceGroupName,
+					ServiceName:    *database.Name,
+					Type:           *database.Type,
+					Location:       *database.Location,
+					Rules:          rr,
+				})
+			}
 		}
 	}
 
