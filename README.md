@@ -86,12 +86,14 @@ To learn more about the recommendations used by **Azure Quick Review (azqr)**, y
 * Azure Database for PostgreSQL Single Server
 * Azure Event Grid
 * Azure Event Hub
+* Azure ExpressRoute Gateway
 * Azure Firewall
 * Azure Front Door
 * Azure Functions
 * Azure Key Vault
 * Azure Kubernetes Service
 * Azure Load Balancer
+* Azure Local Gateway
 * Azure Logic Apps
 * Azure Service Bus
 * Azure SignalR Service
@@ -106,6 +108,7 @@ To learn more about the recommendations used by **Azure Quick Review (azqr)**, y
 * Azure Virtual Machine
 * Azure Virtual Network
 * Azure Virtual WAN
+* Azure VPN Gateway
 * Azure Web PubSub
 
 ## Usage
